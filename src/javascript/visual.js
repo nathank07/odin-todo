@@ -1,9 +1,9 @@
 const body = document.querySelector('body');
 
-function displayItems(project){
+function displayItems(name, items){
     const toDoGrid = document.createElement('div');
     toDoGrid.classList.add("grid");
-    project.forEach(toDoItem => {
+    items.forEach(toDoItem => {
         let toDoItemDiv = document.createElement('div');
         toDoItemDiv.classList.add("gridItem");
 
@@ -43,29 +43,27 @@ function displayItems(project){
         body.removeChild(document.querySelector('.grid')); // Clears the grid if there is one already available
     }
     body.appendChild(toDoGrid);
+    document.querySelectorAll('.tabButton').forEach(button => {
+        button.classList.remove('selected');
+        if(button.innerHTML === name){
+            button.classList.add('selected');
+        }
+    });
 }
 
 function tabView(projects){
     const tabView = document.createElement('div');
     tabView.classList.add('tabView');
-    for (const [name, items] of Object.entries(projects)){ // for each project name list the to do items
+    for (const [name, items] of projects){ // for each project name list items when clicked
         const projectButton = document.createElement('button');
         projectButton.classList.add('tabButton');
         projectButton.innerHTML = name;
         projectButton.addEventListener('click', () => {
-            let buttons = document.querySelectorAll('.tabButton');
-            buttons.forEach(button => {
-                button.classList.remove('selected'); //Removes any previous selected buttons
-            })
-            projectButton.classList.add('selected'); //New button is now selected
-            displayItems(items);
+            displayItems(name, items);
         })
         tabView.appendChild(projectButton);
     };
     body.appendChild(tabView);
-    if(tabView.querySelector('.tabButton') !== null){ 
-        tabView.querySelector('.tabButton').classList.add('selected'); //Selects the first project as selected
-    }
 }
 
 export {displayItems, tabView};
