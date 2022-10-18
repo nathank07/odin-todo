@@ -18,3 +18,7 @@ h3{
     display: flex;
     justify-content: space-evenly;
 }
+
+.selected{
+    background-color: brown;
+}
