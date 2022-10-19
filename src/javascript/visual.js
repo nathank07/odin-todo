@@ -1,14 +1,27 @@
+import add from "./add";
+import projects from '../index.js';
+
+const toDoItem = (title, description, dueDate, priority, notes) => {
+    return {title, description, dueDate, priority, notes};
+}
 const body = document.querySelector('body');
 
-function displayItems(name, items){
+function displayItems(project){
     const toDoGrid = document.createElement('div');
     toDoGrid.classList.add("grid");
-    items.forEach(toDoItem => {
+
+    project[1].forEach(toDoItem => { //project[1] = Project items
         let toDoItemDiv = document.createElement('div');
         toDoItemDiv.classList.add("gridItem");
 
-        let title = document.createElement('h3');
+        let titleBar = document.createElement('div');
+        let title = document.createElement('h2');
+        let removeElement = document.createElement('div');
         title.innerHTML = toDoItem.title;
+        removeElement.innerHTML = "X";
+        titleBar.classList.add('titleBar');
+        titleBar.append(title);
+        titleBar.append(removeElement);
 
         let description = document.createElement('p');
         description.innerHTML = toDoItem.description;
@@ -19,33 +32,39 @@ function displayItems(name, items){
             let priority = document.createElement('div');
             priority.innerHTML = toDoItem.priority;
 
-            let dueDate = document.createElement('h4');
+            let dueDate = document.createElement('div');
             dueDate.innerHTML = toDoItem.dueDate;
 
             let notes = document.createElement('div');
             notes.innerHTML = toDoItem.notes;
 
-            let checklist = document.createElement('div');
-            checklist.innerHTML = toDoItem.checklist;
-
             bottomBar.appendChild(priority);
             bottomBar.appendChild(dueDate);
             bottomBar.appendChild(notes);
-            bottomBar.appendChild(checklist);
         
-        toDoItemDiv.appendChild(title);
+        toDoItemDiv.appendChild(titleBar);
         toDoItemDiv.appendChild(description);
         toDoItemDiv.appendChild(bottomBar);
 
         toDoGrid.appendChild(toDoItemDiv);
     });
+
+    let addButton = document.createElement('span');
+    addButton.classList.add('gridItem', 'addButton');
+    addButton.innerHTML = "add"
+    addButton.addEventListener('click', () => {
+        add(projects, project[0], toDoItem("a", "a", "a", "a", "a", "a"));
+    })
+    toDoGrid.appendChild(addButton);
+
     if(document.querySelector('.grid') !== null){
         body.removeChild(document.querySelector('.grid')); // Clears the grid if there is one already available
     }
     body.appendChild(toDoGrid);
-    document.querySelectorAll('.tabButton').forEach(button => {
+
+    document.querySelectorAll('.tabButton').forEach(button => { // Gives button selection class if it is picked
         button.classList.remove('selected');
-        if(button.innerHTML === name){
+        if(button.innerHTML === project[0]){ //project[0] = name of project
             button.classList.add('selected');
         }
     });
@@ -59,7 +78,7 @@ function tabView(projects){
         projectButton.classList.add('tabButton');
         projectButton.innerHTML = name;
         projectButton.addEventListener('click', () => {
-            displayItems(name, items);
+            displayItems([name, items]);
         })
         tabView.appendChild(projectButton);
     };
