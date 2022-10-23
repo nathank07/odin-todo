@@ -42,7 +42,10 @@ function displayItems(project, viewingMultiple){
             dueDate.innerHTML = toDoItem.dueDate;
 
             let notes = document.createElement('div');
-            notes.innerHTML = toDoItem.notes;
+            notes.innerHTML = "notes";
+            notes.addEventListener('click', () => {
+                alert(toDoItem.notes);
+            })
 
             bottomBar.appendChild(priority);
             bottomBar.appendChild(dueDate);
