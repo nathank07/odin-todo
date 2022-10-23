@@ -6,7 +6,7 @@ const toDoItem = (title, description, dueDate, priority, notes) => {
 }
 const body = document.querySelector('body');
 
-function displayItems(project){
+function displayItems(project, viewingMultiple){
     const toDoGrid = document.createElement('div');
     toDoGrid.classList.add("grid");
 
@@ -16,9 +16,12 @@ function displayItems(project){
 
         let titleBar = document.createElement('div');
         let title = document.createElement('h2');
-        let removeElement = document.createElement('div');
+        let removeElement = document.createElement('button');
         title.innerHTML = toDoItem.title;
         removeElement.innerHTML = "X";
+        removeElement.addEventListener('click', () => {
+            console.log(toDoItem)
+        })
         titleBar.classList.add('titleBar');
         titleBar.append(title);
         titleBar.append(removeElement);
@@ -57,16 +60,42 @@ function displayItems(project){
     })
     toDoGrid.appendChild(addButton);
 
-    if(document.querySelector('.grid') !== null){
-        body.removeChild(document.querySelector('.grid')); // Clears the grid if there is one already available
+    if(document.querySelector('.container') !== null){
+        if(viewingMultiple === true){
+            document.querySelector('.container').appendChild(toDoGrid);
+        }
+        else{
+            body.removeChild(document.querySelector('.container')); // Clears the grid if there is one already available
+            const container = document.createElement('div');
+            container.classList.add('container');
+            container.appendChild(toDoGrid);
+            body.appendChild(container);
+        }
     }
-    body.appendChild(toDoGrid);
-
+    else{
+        const container = document.createElement('div');
+        container.classList.add('container');
+        container.appendChild(toDoGrid);
+        body.appendChild(container);
+    }
+    
     document.querySelectorAll('.tabButton').forEach(button => { // Gives button selection class if it is picked
         button.classList.remove('selected');
         if(button.innerHTML === project[0]){ //project[0] = name of project
             button.classList.add('selected');
         }
+    });
+
+}
+
+function displayAllItems(projects){
+    const container = document.querySelector('.container');
+    container.innerHTML = "";
+    projects.forEach(project => {
+        const header = document.createElement('h2');
+        header.innerHTML = project[0];
+        container.appendChild(header);
+        displayItems(project, true);
     });
 }
 
@@ -82,6 +111,13 @@ function tabView(projects){
         })
         tabView.appendChild(projectButton);
     };
+    const viewAllButton = document.createElement('button');
+    viewAllButton.classList.add('tabButton');
+    viewAllButton.innerHTML = "View All Projects";
+    viewAllButton.addEventListener('click', () => {
+        displayAllItems(projects);
+    })
+    tabView.appendChild(viewAllButton);
     body.appendChild(tabView);
 }
 

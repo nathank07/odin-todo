@@ -8,7 +8,7 @@ let projects = [
     ["Today", [toDoItem("a", "b", "c", "d", "e"), toDoItem("a", "b", "c", "d", "e"), toDoItem("a", "b", "c", "d", "e")]],
     ["This Week", [toDoItem("a", "b", "c", "d", "e"), toDoItem("a", "b", "c", "d", "e")]],
     ["Friday", [toDoItem("a", "b", "c", "d", "e"), toDoItem("a", "b", "c", "d", "e"), toDoItem("a", "b", "c", "d", "e"), toDoItem("a", "b", "c", "d", "e")]],
-    ["AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", []],
+    ["AAAAA", []],
     ["a", []]
 ]
 export default projects;

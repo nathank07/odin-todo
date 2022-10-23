@@ -26,8 +26,6 @@ body{
     all: unset;
     color: var(--secondary-foreground-color);
     min-height:4rem;
-    margin-bottom: 0.2rem;
-    margin-top: 1rem;
     padding-left: 1rem;
     text-align:left;
 }
