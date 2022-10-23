@@ -124,7 +124,22 @@ function tabView(projects){
     viewAllButton.addEventListener('click', () => {
         displayAllItems(projects);
     })
+    const addRemoveButton = document.createElement('button');
+    addRemoveButton.classList.add('tabButton', 'divided');
+    const addButton = document.createElement('button');
+    addButton.classList.add('add');
+    addButton.innerHTML = 'add';
+    addButton.addEventListener('click', () => {
+        add(projects, prompt("Type project name"));
+        reset(projects.length - 1);  
+    })
+    const removeButton = document.createElement('button');
+    removeButton.classList.add('remove');
+    removeButton.innerHTML = 'remove';
+    addRemoveButton.appendChild(addButton);
+    addRemoveButton.appendChild(removeButton);
     tabView.appendChild(viewAllButton);
+    tabView.appendChild(addRemoveButton);
     body.appendChild(tabView);
 }
 
