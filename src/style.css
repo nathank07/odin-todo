@@ -15,6 +15,13 @@ body{
     height: 100vh;
 }
 
+.info{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
 .tabView{
     display:flex;
     flex-direction: column;

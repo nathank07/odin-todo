@@ -5,27 +5,29 @@ import remove from './javascript/remove';
 const toDoItem = (title, description, dueDate, priority, notes) => {
     return {title, description, dueDate, priority, notes};
 }
-let projects = [
+let projects2 = [
     ["Today", [toDoItem("a", "b", "c", "d", "e"), toDoItem("a", "b", "c", "d", "e"), toDoItem("a", "b", "c", "d", "e")]],
     ["This Week", [toDoItem("a", "b", "c", "d", "e"), toDoItem("a", "b", "c", "d", "e")]],
     ["Friday", [toDoItem("a", "b", "c", "d", "e"), toDoItem("a", "b", "c", "d", "e"), toDoItem("a", "b", "c", "d", "e"), toDoItem("a", "b", "c", "d", "e")]],
     ["AAAAA", []],
     ["a", []]
 ]
+let projects = [];
 export default projects;
 
-add(projects, "Ratio");
-add(projects, "Ratio 2", toDoItem("asdkl;asdj", "asdasdasd", "asdasdasd", "asdasddasd", "asdasdasd"));
-add(projects, "Today", toDoItem("asdkl;asdj", "asdasdasd", "asdasdasd", "asdasddasd", "asdasdasd"));
-add(projects, "This Week", toDoItem("asdkl;asdj", "asdasdasd", "asdasdasd", "asdasddasd", "asdasdasd"));
+add(projects2, "Ratio");
+add(projects2, "Ratio 2", toDoItem("asdkl;asdj", "asdasdasd", "asdasdasd", "asdasddasd", "asdasdasd"));
+add(projects2, "Today", toDoItem("asdkl;asdj", "asdasdasd", "asdasdasd", "asdasddasd", "asdasdasd"));
+add(projects2, "This Week", toDoItem("asdkl;asdj", "asdasdasd", "asdasdasd", "asdasddasd", "asdasdasd"));
 
-console.log(projects);
+let test = JSON.stringify(projects);
+let test2 = JSON.parse(test);
+console.log(test);
+console.log(test2);
+
 tabView(projects);
-if(displayItems !== []){
-    displayItems(projects[0]);
-} else{
-    //empty project logic
-}
+displayItems(projects[0]);
+
 
 
 
