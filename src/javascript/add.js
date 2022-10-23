@@ -1,10 +1,9 @@
+import keyInArray from "./keyInArray.js";
+
 
 export default function add(projects, project, toDoItem){
-    if(keyInArray(project, projects) === false){
-        console.log(keyInArray(project, projects))
+    if(keyInArray(project, projects) === -1){
         projects.push([project, []]);
-        console.log('created ', project);
-        console.log([project, []]);
     }
     if(toDoItem !== undefined){
        projects.forEach(element => {
@@ -15,11 +14,3 @@ export default function add(projects, project, toDoItem){
     }
 }
 
-function keyInArray(key, array) { //function that checks if a 2D array includes key
-    return array.some(element => {
-        if(element[0] === key){
-            console.log(element[0], key);
-            return true;
-        }
-    });
-}

@@ -1,4 +1,5 @@
-import add from "./add";
+import add from "./add.js";
+import remove from "./remove.js";
 import projects from '../index.js';
 
 const toDoItem = (title, description, dueDate, priority, notes) => {
@@ -10,7 +11,7 @@ function displayItems(project, viewingMultiple){
     const toDoGrid = document.createElement('div');
     toDoGrid.classList.add("grid");
 
-    project[1].forEach(toDoItem => { //project[1] = Project items
+    project[1].forEach((toDoItem, index) => { //project[1] = Project items
         let toDoItemDiv = document.createElement('div');
         toDoItemDiv.classList.add("gridItem");
 
@@ -20,7 +21,7 @@ function displayItems(project, viewingMultiple){
         title.innerHTML = toDoItem.title;
         removeElement.innerHTML = "X";
         removeElement.addEventListener('click', () => {
-            console.log(toDoItem)
+            remove(projects, project[0], index);
         })
         titleBar.classList.add('titleBar');
         titleBar.append(title);

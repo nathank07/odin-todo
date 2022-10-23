@@ -16,6 +16,7 @@ export default projects;
 add(projects, "Ratio");
 add(projects, "Ratio 2", toDoItem("asdkl;asdj", "asdasdasd", "asdasdasd", "asdasddasd", "asdasdasd"));
 add(projects, "Today", toDoItem("asdkl;asdj", "asdasdasd", "asdasdasd", "asdasddasd", "asdasdasd"));
+add(projects, "This Week", toDoItem("asdkl;asdj", "asdasdasd", "asdasdasd", "asdasddasd", "asdasdasd"));
 
 console.log(projects);
 tabView(projects);
