@@ -1,5 +1,4 @@
 import keyInArray from "./keyInArray.js";
-import { displayItems } from "./visual.js";
 
 export default function add(projects, project, toDoItem){
     if(keyInArray(project, projects) === -1){

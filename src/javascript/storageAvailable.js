@@ -1,4 +1,4 @@
-function storageAvailable(type) {
+export default function storageAvailable(type) {
     let storage;
     try {
         storage = window[type];
@@ -22,3 +22,6 @@ function storageAvailable(type) {
             (storage && storage.length !== 0);
     }
 }
+
+// I did not write this! 
+// https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API

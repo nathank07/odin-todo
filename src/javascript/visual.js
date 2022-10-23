@@ -1,11 +1,12 @@
 import add from "./add.js";
 import remove from "./remove.js";
-import projects from '../index.js';
+import projects from '../index.js'
 import keyInArray from "./keyInArray.js";
 
 const toDoItem = (title, description, dueDate, priority, notes) => {
     return {title, description, dueDate, priority, notes};
 }
+
 const body = document.querySelector('body');
 
 function displayItems(project, viewingMultiple){
@@ -63,6 +64,7 @@ function displayItems(project, viewingMultiple){
         addButton.classList.add('gridItem', 'addButton');
         addButton.innerHTML = "add"
         addButton.addEventListener('click', () => {
+            console.log(projects, project, project[0], toDoItem("a", "a", "a", "a", "a", "a"));
             add(projects, project[0], toDoItem("a", "a", "a", "a", "a", "a"));
             reset(keyInArray(project[0], projects));
         })
@@ -168,6 +170,7 @@ function reset(index) {
     body.innerHTML = "";
     tabView(projects);
     displayItems(projects[index]);
+    localStorage.setItem('projects', JSON.stringify(projects));
 }
 
 export {displayItems, tabView, reset};
