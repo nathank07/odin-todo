@@ -130,12 +130,22 @@ function tabView(projects){
     addButton.classList.add('add');
     addButton.innerHTML = 'add';
     addButton.addEventListener('click', () => {
-        add(projects, prompt("Type project name"));
-        reset(projects.length - 1);  
+        const project = prompt("Type project name");
+        if(project !== null){
+            add(projects, project);
+            reset(keyInArray(project, projects));  
+        }
     })
     const removeButton = document.createElement('button');
     removeButton.classList.add('remove');
     removeButton.innerHTML = 'remove';
+    removeButton.addEventListener('click', () => {
+        const project = prompt('Type project to remove');
+        if(project !== null){
+            remove(projects, project);
+            reset(0);
+        }
+    })
     addRemoveButton.appendChild(addButton);
     addRemoveButton.appendChild(removeButton);
     tabView.appendChild(viewAllButton);

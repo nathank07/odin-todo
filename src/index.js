@@ -1,6 +1,7 @@
 import './style.css';
 import { displayItems, tabView } from './javascript/visual.js';
 import add from './javascript/add.js'
+import remove from './javascript/remove';
 const toDoItem = (title, description, dueDate, priority, notes) => {
     return {title, description, dueDate, priority, notes};
 }
