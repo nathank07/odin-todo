@@ -1,6 +1,7 @@
 import add from "./add.js";
 import remove from "./remove.js";
 import projects from '../index.js';
+import keyInArray from "./keyInArray.js";
 
 const toDoItem = (title, description, dueDate, priority, notes) => {
     return {title, description, dueDate, priority, notes};
@@ -22,6 +23,7 @@ function displayItems(project, viewingMultiple){
         removeElement.innerHTML = "X";
         removeElement.addEventListener('click', () => {
             remove(projects, project[0], index);
+            reset(keyInArray(project[0], projects));
         })
         titleBar.classList.add('titleBar');
         titleBar.append(title);
@@ -58,6 +60,7 @@ function displayItems(project, viewingMultiple){
     addButton.innerHTML = "add"
     addButton.addEventListener('click', () => {
         add(projects, project[0], toDoItem("a", "a", "a", "a", "a", "a"));
+        reset(keyInArray(project[0], projects));
     })
     toDoGrid.appendChild(addButton);
 
@@ -122,4 +125,10 @@ function tabView(projects){
     body.appendChild(tabView);
 }
 
-export {displayItems, tabView};
+function reset(index) {
+    body.innerHTML = "";
+    tabView(projects);
+    displayItems(projects[index]);
+}
+
+export {displayItems, tabView, reset};
