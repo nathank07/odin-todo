@@ -2,10 +2,7 @@ import add from "./add.js";
 import remove from "./remove.js";
 import projects from '../index.js'
 import keyInArray from "./keyInArray.js";
-
-const toDoItem = (title, description, dueDate, priority, notes) => {
-    return {title, description, dueDate, priority, notes};
-}
+import addForm from "./form.js";
 
 const body = document.querySelector('body');
 
@@ -22,7 +19,7 @@ function displayItems(project, viewingMultiple){
             let title = document.createElement('h2');
             let removeElement = document.createElement('button');
             title.innerHTML = toDoItem.title;
-            removeElement.innerHTML = "X";
+            removeElement.innerHTML = "✖";
             removeElement.addEventListener('click', () => {
                 remove(projects, project[0], index);
                 reset(keyInArray(project[0], projects));
@@ -62,10 +59,9 @@ function displayItems(project, viewingMultiple){
 
         let addButton = document.createElement('span');
         addButton.classList.add('gridItem', 'addButton');
-        addButton.innerHTML = "add"
+        addButton.innerHTML = "+"
         addButton.addEventListener('click', () => {
-            console.log(projects, project, project[0], toDoItem("a", "a", "a", "a", "a", "a"));
-            add(projects, project[0], toDoItem("a", "a", "a", "a", "a", "a"));
+            addForm(project[0]);
             reset(keyInArray(project[0], projects));
         })
         toDoGrid.appendChild(addButton);
@@ -86,7 +82,7 @@ function displayItems(project, viewingMultiple){
             const container = document.createElement('div');
             container.classList.add('container');
             container.appendChild(toDoGrid);
-            body.appendChild(container);
+            body.appendChild(container); 
         }
         
         document.querySelectorAll('.tabButton').forEach(button => { // Gives button selection class if it is picked

@@ -1,10 +1,8 @@
 import './style.css';
 import { displayItems, tabView } from './javascript/visual.js';
 import storageAvailable from './javascript/storageAvailable.js';
+import toDoItem from './javascript/toDoItem.js';
 
-const toDoItem = (title, description, dueDate, priority, notes) => {
-    return {title, description, dueDate, priority, notes};
-}
 
 let projects = [
     ["My Project", [toDoItem("Project 1", "b", "c", "d", "e"), toDoItem("Project 2", "b", "c", "d", "e"), toDoItem("Project 3", "b", "c", "d", "e")]],
@@ -21,15 +19,6 @@ if(storageAvailable('localStorage')){
         localStorage.setItem('projects', JSON.stringify(projects));
     }
 }
-
-console.log(projects);
-
-
-
-
-
-let test = JSON.stringify(projects);
-let test2 = JSON.parse(test);
 
 tabView(projects);
 displayItems(projects[0]);
